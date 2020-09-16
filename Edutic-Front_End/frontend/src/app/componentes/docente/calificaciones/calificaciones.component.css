@@ -1,0 +1,21 @@
+.inputTabla{
+    height: 20px;
+    width: 110px;
+    margin-top: 10px;
+
+}
+.borde{
+    margin-top: 0px;
+    margin-bottom: 0px;
+    width: 46px !important;
+     height: 42px !important;
+}
+
+.ui-g-3 {
+    width: 25%;
+    text-align: center;
+}
+.ui-g-12{
+    text-align: center;
+    width: 100%;
+}

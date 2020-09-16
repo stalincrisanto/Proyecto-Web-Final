@@ -1,0 +1,40 @@
+<div class="card card-w-title">
+    <div class="ui-g-12">
+        <div class="contenedor">
+            <div class="ui-g-12" >
+                <div class="ui-g-12">
+                    <h3 for="nombre" class="texto">Tareas asignadas</h3>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="card">
+            <div class="ui-g">
+                <div class="ui-g-3 ui-md-3" *ngFor="let tarea of tareas ">
+                    <mat-card class="example-card" class="contenedor">
+                        <mat-card-header class="contenedor">
+                            <div mat-card-avatar class="example-header-image"></div>
+                            <mat-card-title>{{tarea.TITULO_TAREA}}</mat-card-title>
+                            <mat-card-subtitle>{{tarea.NOMBRE}}</mat-card-subtitle>
+                            <mat-card-title>{{tarea.FECHA_ENTREGA | date:'mediumDate' }}</mat-card-title>
+                        </mat-card-header>
+                        <mat-card-content>
+                            <p class="contenedor">
+                                {{tarea.DETALLE_TAREA}}
+                            </p>
+                        </mat-card-content>
+                        <mat-card-actions class="contenedor">
+                            <button label="Primary" pbutton=""  type="button"
+                                ng-reflect-label="Primary"
+                                class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only"><span
+                                    class="ui-button-text ui-clickable">Descargar archivo</span></button>
+
+                        </mat-card-actions>
+                    </mat-card>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

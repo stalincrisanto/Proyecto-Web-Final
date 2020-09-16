@@ -1,0 +1,134 @@
+<div class="ui-g">
+    <p-toast></p-toast>
+    <div class="ui-g-12">
+        <div class="card no-margin">
+        <h1>INFORMACIÓN DE LOS EDIFICIOS</h1>
+        <p-table [value]="edificios">
+            <ng-template pTemplate="header">
+                <tr>
+                    <th>CÓDIGO DE EDIFICIO</th>
+                    <th>CODIGO DE SEDE</th>
+                    <th>NOMBRE</th>
+                    <th>PISOS</th>
+                    <th>ACCIONES</th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-edificio>
+                <tr>
+                    <th>{{edificio.COD_EDIFICIO}}</th>
+                    <th>{{edificio.COD_SEDE}}</th>
+                    <th>{{edificio.NOMBRE}}</th>
+                    <th>{{edificio.CANTIDAD_PISOS}}</th>
+                    <td>
+                        <div class="text-center">
+                            <button  class="ui-button-warning ui-button ui-widget ui-state-default ui-corner-all ui-button-icon-only" icon="pi pi-pencil" pbutton="" type="button" ng-reflect-icon="pi pi-pencil"><span aria-hidden="true" class="ui-button-icon-left ui-clickable pi pi-pencil"></span><span class="ui-button-text ui-clickable">ui-btn</span></button>
+                            &nbsp;<button (click)="eliminarEdificio(edificio.COD_EDIFICIO)" class="ui-button-danger ui-button ui-widget ui-state-default ui-corner-all ui-button-icon-only" icon="pi pi-trash" pbutton="" style="margin-right: .5em" type="button" ng-reflect-icon="pi pi-trash"><span aria-hidden="true" class="ui-button-icon-left ui-clickable pi pi-trash"></span><span class="ui-button-text ui-clickable">ui-btn</span></button>                            
+                        </div>
+                    </td>
+                </tr>
+            </ng-template>
+        </p-table>
+        </div>
+    </div>
+    <!--<p-dialog header="Modificar Sede" [(visible)]="displaySaveDialog" [modal]="true" [responsive]="true" [style]="{width:'400px'}"> 
+        <div class="ui-g ui-fluid">
+            <div class="ui-g-12">
+                <div class="ui-g-4">
+                    <label for="cod_sede">Código de Sede</label>
+                </div>
+                <div class="ui-g-8">
+                    <input id="cod_sede" type="text" pInputText [disabled]="disabled" [(ngModel)]="sedeSeleccionada.COD_SEDE" />
+                </div>
+            </div>
+            <div class="ui-g-12">
+                <div class="ui-g-4">
+                    <label for="nombre">Nombre de la Sede</label>
+                </div>
+                <div class="ui-g-8">
+                    <input pInputText id="nombre" [(ngModel)]="sedeSeleccionada.NOMBRE">
+                </div>
+            </div>
+            <div class="ui-g-12">
+                <div class="ui-g-4">
+                    <label for="direccion">Dirección de la Sede</label>
+                </div>
+                <div class="ui-g-8">
+                    <input pInputText id="direccion" [(ngModel)]="sedeSeleccionada.DIRECCION">
+                </div>
+            </div>
+            <div class="ui-g-12">
+                <div class="ui-g-4">
+                    <label for="telefono">Teléfono de la Sede</label>
+                </div>
+                <div class="ui-g-8">
+                    <input pInputText id="telefono" [(ngModel)]="sedeSeleccionada.TELEFONO">
+                </div>
+            </div>
+            <div class="ui-g-12">
+                <div class="ui-g-4">
+                    <label for="codigo_postal">Código Postal</label>
+                </div>
+                <div class="ui-g-8">
+                    <input pInputText id="codigo_postal" [(ngModel)]="sedeSeleccionada.CODIGO_POSTAL">
+                </div>
+            </div>
+            <button (click)="modificarSede(sedeSeleccionada.COD_SEDE)" label="Success" pbutton="" style="margin-bottom:10px" type="button" ng-reflect-label="Primary" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only"><span class="ui-button-text ui-clickable">Modificar</span></button>
+        </div>
+    </p-dialog>-->
+</div>
+
+<div class="card card-w-title">
+    <h1 style="text-align: center;">AÑADIR NUEVO EDIFICIO</h1><br>
+    <div class="p-grid ui-fluid" style="margin-left: 250px;">
+        <div class="ui-g-12">
+            <div class="ui-g-3">
+                <label for="cod_sede">Código del Edificio</label>
+            </div>
+            <div class="ui-g-6 ui-inputgroup">
+                <span class="ui-inputgroup-addon"><i class="pi pi-home"></i></span>
+                <input pInputText id="cod_edificio" [(ngModel)]="nuevoEdificio.cod_edificio" placeholder="Ingrese el código del edificio">   
+            </div>
+        </div>
+    </div>
+    <div class="p-grid ui-fluid" style="margin-left: 250px;">
+        <div class="ui-g-12">
+            <div class="ui-g-3">
+                <label for="nombre">Código de la Sede</label>
+            </div>
+            <div class="ui-g-8 ui-inputgroup">
+                <span class="ui-inputgroup-addon"><i class="pi pi-tags"></i></span>
+                <select [(ngModel)]="nuevoEdificio.cod_sede">
+                    <option *ngFor="let sede of sedes" [value]="sede.COD_SEDE" >
+                       {{sede.COD_SEDE}}
+                    </option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="p-grid ui-fluid" style="margin-left: 250px;">
+        <div class="ui-g-12">
+            <div class="ui-g-3">
+                <label for="direccion">Nombre del Edificio</label>
+            </div>
+            <div class="ui-g-6 ui-inputgroup">
+                <span class="ui-inputgroup-addon"><i class="pi pi-map-marker"></i></span>
+                <input pInputText id="nombre" [(ngModel)]="nuevoEdificio.nombre" placeholder="Ingrese el nombre del Edificio">   
+            </div>
+        </div>
+    </div>
+    <div class="p-grid ui-fluid" style="margin-left: 250px;">
+        <div class="ui-g-12">
+            <div class="ui-g-3">
+                <label for="cantidad_pisos">Cantidad de Pisos</label>
+            </div>
+            <div class="ui-g-6 ui-inputgroup">
+                <span class="ui-inputgroup-addon"><i class="pi pi-sort-numeric-up-alt"></i></span>
+                <input pInputText id="cantidad_pisos" [(ngModel)]="nuevoEdificio.cantidad_pisos" placeholder="Ingrese la cantidad de pisos del edificio">   
+            </div>
+        </div>
+    </div>
+    <div class="ui-g-8" style="margin-left: 470px;">
+        <button (click)="agregarEdificio(nuevoEdificio)" label="Primary" pbutton="" style="margin-bottom:10px" type="button" ng-reflect-label="Primary" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only"><span class="ui-button-text ui-clickable">Agregar</span></button>
+    </div>
+</div>
+

@@ -1,0 +1,12 @@
+.contenedor{
+    text-align: center;
+    justify-content: center;
+}
+.texto{
+    font-family: "Avant Garde", Avantgarde, "Century Gothic", CenturyGothic, "AppleGothic", sans-serif;
+    font-size: 20px;
+    text-align: center;
+    text-transform: uppercase;
+    text-rendering: optimizeLegibility;
+    
+  }

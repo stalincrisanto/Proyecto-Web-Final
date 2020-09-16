@@ -1,0 +1,155 @@
+<div class="card card-w-title">
+    <div class="contenedor">
+        <div class="ui-g-12" >
+            <div class="ui-g-12">
+                <h3 for="nombre" class="texto">Calificaciones estudiante</h3>
+            </div>
+        </div>
+
+    </div>
+    <div class="p-grid ui-fluid" >
+        <div class="ui-g-12">
+            <div class="ui-g-3"> </div>
+            <div class="ui-g-3">
+                <label for="nombre">Seleccione periodo electivo </label>
+            </div>
+            <div class="ui-g-3 ui-inputgroup">
+                <span class="ui-inputgroup-addon"><i class="pi pi-tags"></i></span>
+                <select [(ngModel)]="cod_periodo_lectivo" placeholder="Seleccione el edificio">
+                    <option *ngFor="let anioLectivo of   anioLectivos" [value]="anioLectivo.COD_PERIODO_LECTIVO">
+                        {{anioLectivo.COD_PERIODO_LECTIVO}}
+                    </option>
+                </select>
+            </div>
+            <div class="ui-g-3"> </div>
+        </div>
+    </div>
+
+    <div class="p-grid ui-fluid" >
+        <div class="ui-g-12">
+            <div class="ui-g-3"> </div>
+            <div class="ui-g-3">
+                <label for="nombre">Seleccione la materia </label>
+            </div>
+            <div class="ui-g-3 ui-inputgroup">
+                <span class="ui-inputgroup-addon"><i class="pi pi-tags"></i></span>
+                <select [(ngModel)]="seleccionado" placeholder="Seleccione la materia">
+                    <option *ngFor="let materia of materias" [ngValue]="materia">
+                        {{materia.NOMBRE}}
+                    </option>
+                </select>
+            </div>
+            <div class="ui-g-3"> </div>
+        </div>
+    </div>
+    <div class="p-grid ui-fluid">
+        <div class="ui-g-12">
+            <div class="ui-g-3"> </div>
+            <div class="ui-g-3">
+                <label for="nombre">Seleccione el Quimestre </label>
+            </div>
+            <div class="ui-g-3 ui-inputgroup">
+                <span class="ui-inputgroup-addon"><i class="pi pi-tags"></i></span>
+                <select [(ngModel)]="semestre" placeholder="Seleccione la materia">
+                    <option *ngFor="let item of lista" [value]="item.codigo">
+                        {{item.nombre}}
+                    </option>
+                </select>
+            </div>
+            <div class="ui-g-3"> </div>
+        </div>
+    </div>
+
+    <div class="ui-g-12">
+        <button (click)="buscarCalificacionesEstudiante()" label="Primary" pbutton="" style="margin-bottom:10px" type="button"
+            ng-reflect-label="Primary"
+            class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only"><span
+                class="ui-button-text ui-clickable">Buscar calificaciones</span></button>
+    </div>
+    <div class="p-col-12">
+        <div class="card no-margin">
+            <p-messages [value]="msgs"></p-messages>
+        </div>
+  
+    </div>
+</div>
+
+
+<div *ngIf="semestre==1; else elseBlock">
+    <div class="card card-w-title">
+
+        <div class="container">
+
+            <div class="row">
+                <div class="col-lg-12">
+                
+                    <div class="table-responsive">
+                        <table id="tablaProductos" class="table table-striped table-bordered table-condensed"
+                            style="width: 100%;">
+                            <thead class="text-center">
+                                <tr>
+                                    <th>Nombre de Asignatura</th>
+                                    <th>Nota 1</th>
+                                    <th>Nota 2</th>
+                                    <th>Nota 3</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let calificacion of calificaciones ">
+                                    <td>{{calificacion.NOMBRE}}</td>
+                                    <td>{{calificacion.NOTA1}}</td>
+                                    <td>{{calificacion.NOTA2}}</td>
+                                    <td>{{calificacion.NOTA3}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div><br>
+    </div>
+    
+
+  </div>
+  <ng-template #elseBlock>
+    <div class="card card-w-title">
+
+        <div class="container">
+            <div class="p-col-12">
+                <div class="card no-margin">
+                    <p-messages [value]="msgs"></p-messages>
+                </div>
+          
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                
+                    <div class="table-responsive">
+                        <table id="tablaProductos" class="table table-striped table-bordered table-condensed"
+                            style="width: 100%;">
+                            <thead class="text-center">
+                                <tr>
+                                    <th>Nombre de Asignatura</th>
+                                    <th>Nota 4</th>
+                                    <th>Nota 5</th>
+                                    <th>Nota 6</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let calificacion of calificaciones ">
+                                    <td>{{calificacion.NOMBRE}}</td>
+                                    <td>{{calificacion.NOTA4}}</td>
+                                    <td>{{calificacion.NOTA5}}</td>
+                                    <td>{{calificacion.NOTA6}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div><br>
+    </div>
+    
+  </ng-template>
+
+

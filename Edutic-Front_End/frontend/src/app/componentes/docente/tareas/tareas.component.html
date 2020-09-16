@@ -1,0 +1,114 @@
+<div class="card card-w-title">
+    <h1 style="text-align: center;">Registrar nueva tarea</h1><br>
+    <div class="p-grid ui-fluid">
+        <div class="ui-g-12">
+            <div class="ui-g-3"> </div>
+            <div class="ui-g-3">
+                <label for="nombre">Seleccione periodo electivo </label>
+            </div>
+            <div class="ui-g-3 ui-inputgroup">
+                <span class="ui-inputgroup-addon"><i class="pi pi-tags"></i></span>
+                <select [(ngModel)]="cod_periodo_lectivo" placeholder="Seleccione el edificio">
+                    <option *ngFor="let anioLectivo of   anioLectivos" [value]="anioLectivo.COD_PERIODO_LECTIVO">
+                        {{anioLectivo.COD_PERIODO_LECTIVO}}
+                    </option>
+                </select>
+            </div>
+            <div class="ui-g-3"> </div>
+        </div>
+    </div>
+
+    <div class="p-grid ui-fluid">
+        <div class="ui-g-12">
+            <div class="ui-g-3"> </div>
+            <div class="ui-g-3">
+                <label for="nombre">Seleccione la materia </label>
+            </div>
+            <div class="ui-g-3 ui-inputgroup">
+                <span class="ui-inputgroup-addon"><i class="pi pi-tags"></i></span>
+                <select [(ngModel)]="seleccionado" placeholder="Seleccione la materia">
+                    <option *ngFor="let materia of materias" [ngValue]="materia">
+                        {{materia.NOMBRE}}
+                    </option>
+                </select>
+            </div>
+            <div class="ui-g-3"> </div>
+        </div>
+    </div>
+
+    <div class="ui-g-12">
+        <button (click)="buscarMateria()" label="Primary" pbutton="" style="margin-bottom:10px" type="button"
+            ng-reflect-label="Primary"
+            class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only"><span
+                class="ui-button-text ui-clickable">Buscar materia</span></button>
+    </div>
+</div>
+
+
+<div class="card card-w-title">
+    <div class="p-col-12">
+        <div class="card no-margin">
+            <p-messages [value]="msgs"></p-messages>
+        </div>
+
+    </div>
+    <div class="ui-g-12">
+        <h1 [(ngModel)]="materia">Nueva tarea para la asignatura {{materia}}</h1>
+
+        <div class="p-grid form-group">
+            <div class="p-col-12 p-md-3">
+                <div class="ui-inputgroup">
+                    <span class="ui-inputgroup-addon">
+                        <i class="pi pi-user"></i>
+                    </span>
+                    <input type="text" [formControl]="itemForm.controls['tituloTarea']" pInputText
+                        placeholder="Titulo de la tarea" style="border-left:0">
+                </div>
+            </div>
+
+        </div>
+        <div class="p-grid form-group">
+            <div class="p-col-12 p-md-3">
+                <div class="ui-inputgroup">
+                    <span class="ui-inputgroup-addon">
+                        <i class="pi pi-user"></i>
+                    </span>
+                    <input type="text" [formControl]="itemForm.controls['detalleTarea']" pInputText
+                        placeholder="Detalles de la tarea" style="border-left:0">
+                </div>
+            </div>
+
+        </div>
+        <div class="p-grid form-group">
+            <div class="p-col-12 p-md-3">
+                <div class="ui-inputgroup">
+                    <span class="ui-inputgroup-addon">
+                        <i class="pi pi-user"></i>
+                    </span>
+                    <input type="date" [formControl]="itemForm.controls['fecha']" pInputText
+                        placeholder="Fecha de entrega" style="border-left:0">
+                </div>
+            </div>
+
+        </div>
+        <div class="p-grid form-group">
+            <div class="p-col-12 p-md-3">
+                <div class="ui-inputgroup">
+                    <span class="ui-inputgroup-addon">
+                        <i class="pi pi-user"></i>
+                    </span>
+                    <input type="file" (change)="fileProgress($event)" pInputText placeholder="Archivos"
+                        style="border-left:0">
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="ui-g-12">
+        <button (click)="guardarTarea()" label="Primary" pbutton="" style="margin-bottom:10px" type="button"
+            ng-reflect-label="Primary"
+            class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only"><span
+                class="ui-button-text ui-clickable">Enviar  tarea</span></button>
+    </div>
+
+</div>

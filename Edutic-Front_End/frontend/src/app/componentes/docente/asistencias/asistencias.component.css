@@ -1,0 +1,19 @@
+.example-radio-group {
+    display: inline-table;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    flex-direction: column;
+    margin: 0px 0;
+    text-align: center;
+    /* justify-content: center; */
+    width: 60%
+  }
+
+  .ui-g-3 {
+    width: 25%;
+    text-align: center;
+}
+.ui-g-12{
+    text-align: center;
+    width: 100%;
+}

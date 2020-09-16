@@ -1,0 +1,134 @@
+<div class="card card-w-title">
+    <h1 style="text-align: center;">Ingresar asistencias </h1><br>
+    <div class="p-grid ui-fluid">
+        <div class="ui-g-12">
+            <div class="ui-g-3"> </div>
+            <div class="ui-g-3">
+                <label for="nombre">Seleccione periodo electivo </label>
+            </div>
+            <div class="ui-g-3 ui-inputgroup">
+                <span class="ui-inputgroup-addon"><i class="pi pi-tags"></i></span>
+                <select [(ngModel)]="cod_periodo_lectivo" placeholder="Seleccione el edificio">
+                    <option *ngFor="let anioLectivo of   anioLectivos" [value]="anioLectivo.COD_PERIODO_LECTIVO">
+                        {{anioLectivo.COD_PERIODO_LECTIVO}}
+                    </option>
+                </select>
+            </div>
+            <div class="ui-g-3"> </div>
+        </div>
+    </div>
+
+    <div class="p-grid ui-fluid">
+        <div class="ui-g-12">
+            <div class="ui-g-3"> </div>
+            <div class="ui-g-3">
+                <label for="nombre">Seleccione la materia </label>
+            </div>
+            <div class="ui-g-3 ui-inputgroup">
+                <span class="ui-inputgroup-addon"><i class="pi pi-tags"></i></span>
+                <select [(ngModel)]="seleccionado" placeholder="Seleccione la materia">
+                    <option *ngFor="let materia of materias" [ngValue]="materia">
+                        {{materia.NOMBRE}}
+                    </option>
+                </select>
+            </div>
+            <div class="ui-g-3"> </div>
+        </div>
+    </div>
+    <div class="p-grid ui-fluid">
+        <div class="ui-g-12">
+            <div class="ui-g-3"> </div>
+            <div class="ui-g-3">
+                <label for="nombre">Seleccione el quimestre </label>
+            </div>
+            <div class="ui-g-3 ui-inputgroup">
+                <span class="ui-inputgroup-addon"><i class="pi pi-tags"></i></span>
+                <select [(ngModel)]="semestre" placeholder="Seleccione la materia">
+                    <option *ngFor="let item of lista" [value]="item.codigo">
+                        {{item.nombre}}
+                    </option>
+                </select>
+            </div>
+            <div class="ui-g-3"> </div>
+        </div>
+    </div>
+
+    <div class="ui-g-12">
+        <button (click)="buscarEstudiantes()" label="Primary" pbutton="" style="margin-bottom:10px" type="button"
+            ng-reflect-label="Primary"
+            class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only"><span
+                class="ui-button-text ui-clickable">Buscar estudiantes</span></button>
+    </div>
+</div>
+
+
+
+
+<div class="card card-w-title">
+    <div class="p-col-12">
+        <div class="card no-margin">
+            <p-messages [value]="msgs"></p-messages>
+        </div>
+
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <label [(ngModel)]="fecha">Fecha de asistencia : {{fecha}}</label>
+                <div class="table-responsive">
+                    <table id="tablaProductos" class="table table-striped table-bordered table-condensed"
+                        style="width: 100%;">
+                        <thead class="text-center">
+                            <tr>
+                                <th>Código </th>
+                                <th>Nombre</th>
+                                <th>Apellido</th>
+
+                                <th>
+                            <tr>
+                                <th>
+                                    Asistencia
+                                </th>
+                                <th>
+                                    Falta justificada
+                                </th>
+                                <th>
+                                    Falta injustificada
+                                </th>
+                            </tr>
+                            </th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let alumno of alumnos ">
+                                <td>{{alumno.COD_PERSONA}}</td>
+                                <td>{{alumno.NOMBRE}}</td>
+                                <td>{{alumno.APELLIDO}}</td>
+                                <mat-radio-group aria-label="Select an option" [(ngModel)]=alumno.estado
+                                    class="example-radio-group">
+                                    <td>
+                                        <mat-radio-button value="asistencia"> </mat-radio-button>
+                                    </td>
+                                    <td>
+                                        <mat-radio-button value="justificado"> </mat-radio-button>
+                                    </td>
+                                    <td>
+                                        <mat-radio-button value="injustificado"> </mat-radio-button>
+                                    </td>
+                                </mat-radio-group>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="ui-g-8" style="margin-left: 470px;">
+            <button (click)="guardarAsistencias()" label="Primary" pbutton="" style="margin-bottom:10px" type="button"
+                ng-reflect-label="Primary"
+                class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only"><span
+                    class="ui-button-text ui-clickable">Gardar Asistencias</span></button>
+        </div>
+    </div><br>
+</div>
